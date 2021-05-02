@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         aa = new TaskAdapter(this, R.layout.row_task, tasks);
 
         // Create a few food objects in Food array
-        tasks = new ArrayList<Task>(tasks);
+        tasks = new ArrayList<>();
         tasks.add(new Task("Desc: Group Submission", "Date: 1 May 2021"));
         tasks.add(new Task("Desc: Assignment Submission", "Date: 5 May 2021"));
         tasks.add(new Task("Desc: Online Course", "Date: 19 Jun 2021"));
@@ -40,30 +40,5 @@ public class MainActivity extends AppCompatActivity {
         aa = new TaskAdapter(this, R.layout.row_task, tasks);
         lv.setAdapter(aa);
 
-        btnShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // The action you want this intent to do;
-                // ACTION_SEND is used to indicate sending text
-                Intent email = new Intent(Intent.ACTION_SEND);
-                // Put essentials like email address, subject & body text
-                email.putExtra(Intent.EXTRA_EMAIL,
-                        new String[]{"jason_lim@rp.edu.sg"});
-
-                String contents = "A task is shared with you from 19023702 \n\n";
-                for (int i = 0; i < tasks.size(); i++) {
-                    contents += tasks.get(i).getDesc() + "\n" + tasks.get(i).getDate();
-                }
-                email.putExtra(Intent.EXTRA_TEXT, contents);
-
-                // This MIME type indicates email
-                email.setType("message/rfc822");
-                // createChooser shows user a list of app that can handle
-                // this MIME type, which is, email
-                startActivity(Intent.createChooser(email,
-                        "Choose an Email client :"));
-
-            }});
     }
 }

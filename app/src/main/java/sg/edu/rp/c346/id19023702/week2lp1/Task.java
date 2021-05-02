@@ -2,7 +2,7 @@ package sg.edu.rp.c346.id19023702.week2lp1;
 
 import java.io.Serializable;
 
-public class Task implements Serializable {
+public class Task  {
     private String Desc;
     private String Date;
 
